@@ -1,0 +1,27 @@
+AUTOMATIC UPDATES (GitHub Releases)
+
+ONE-TIME SETUP
+1. Make a free account at github.com, then create a new PUBLIC repository named: bo1-drop-tracker
+2. Open package.json and replace YOUR_GITHUB_USERNAME with your GitHub username.
+3. Create a token: GitHub > Settings > Developer settings > Personal access tokens > Tokens (classic)
+   > Generate new token, tick "repo", copy it. (Keep it private.)
+4. Install Node.js (nodejs.org, LTS) if you do not have it.
+
+PUBLISHING A VERSION (do this each time there is a new zip from Claude)
+1. Unzip the new project over your project folder.
+2. In package.json raise the "version" number (for example 1.0.0 -> 1.0.1). It MUST go up or nobody gets the update.
+3. Open a terminal in the folder and run (Windows PowerShell):
+     npm install
+     $env:GH_TOKEN="paste-your-token-here"
+     npm run release
+   This builds the installer and uploads it to your repo as a draft Release.
+4. On GitHub open your repo > Releases, open the draft, click "Publish release".
+
+WHAT USERS DO
+- First time: download "BO1 Drop Tracker Setup x.y.z.exe" from your Releases page and run it.
+- After that the app checks for updates when it starts and ASKS before doing anything: Update now, Later, or Skip this version. Nothing downloads or installs without a yes.
+
+NOTES
+- Test locally without publishing: npm run dist (builds the installer, uploads nothing).
+- The installer is not code-signed, so Windows SmartScreen may warn on first install ("More info" > "Run anyway").
+- Always on top, transparency, hotkeys and screen reading all travel with the installed app.

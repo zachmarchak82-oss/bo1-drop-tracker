@@ -1,0 +1,43 @@
+{
+  "name": "bo1-drop-tracker",
+  "version": "1.0.1",
+  "description": "BO1 Zombies Drop Tracker",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --publish never",
+    "release": "electron-builder --win nsis --publish always"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.local.bo1droptracker",
+    "productName": "BO1 Drop Tracker",
+    "files": [
+      "main.js",
+      "preload.js",
+      "detect.js",
+      "index.html"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "zachmarchak82-oss",
+        "repo": "bo1-drop-tracker"
+      }
+    ]
+  },
+  "dependencies": {
+    "tesseract.js": "^5.1.1",
+    "electron-updater": "^6.3.9"
+  }
+}
